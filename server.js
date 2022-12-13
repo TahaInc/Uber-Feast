@@ -1,5 +1,6 @@
 const fs = require("fs");
 const ejs = require("ejs");
+const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const mongo = require("mongodb");
@@ -26,7 +27,7 @@ fs.readdirSync("restaurants").forEach((file) => {
 });
 
 app.set("view-engine", "ejs");
-app.use(express.static("/projects/uber-feast/views"));
+app.use(express.static(path.join(__dirname, "views")));
 app.use(express.json());
 app.use(session({ secret: "a4", resave: true, saveUninitialized: true, store: mongoStore }));
 app.use(express.urlencoded({ extended: true }));
@@ -47,14 +48,14 @@ app.get("/order", (req, res) => {
   if (req.loggedIn) {
     res.render("orderMenu.ejs", { user: req.user });
   } else {
-    res.redirect("/login");
+    res.redirect("./login");
   }
 });
 
 app.get("/login", (req, res) => {
   // Serve the homepage if already logged in
   if (req.loggedIn) {
-    res.redirect("/");
+    res.redirect("./");
   } else {
     res.render("login.ejs");
   }
@@ -80,7 +81,7 @@ app.post("/login", (req, res) => {
 app.get("/register", (req, res) => {
   // Serve the homepage if already logged in
   if (req.loggedIn) {
-    res.redirect("/");
+    res.redirect("./");
   } else {
     res.render("register.ejs");
   }
@@ -106,7 +107,7 @@ app.get("/logout", (req, res) => {
   // Set the credential cookies to null and redirect to home page
   req.session.username = null;
   req.session.password = null;
-  res.redirect("/");
+  res.redirect("./");
 });
 
 app.get("/restaurants", (req, res) => {
