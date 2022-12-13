@@ -1,0 +1,127 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Feast - Order #<%= order._id %>
+    </title>
+    <link rel="icon" href="../assets/img/favicon.png">
+
+    <link rel="stylesheet" href="../style.css">
+    <script src="../user.js" defer></script>
+
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <img id="logo" src="../assets/img/logo.png">
+        <div id="nav_links">
+            <a href="/">
+                <h2>Home</h2>
+            </a>
+            <a href="/users">
+                <h2>Users</h2>
+            </a>
+            <% if (user) { %>
+                <a href="/order">
+                    <h2>Order</h2>
+                </a>
+                <% } %>
+        </div>
+
+        <% if (!user) { %>
+            <div id="login_button">
+                <a class="sub_nav_links" href="/register">
+                    <h2 class="sub_nav_text">Register</h2>
+                </a>
+                <a class="sub_nav_links" href="/login">
+                    <h2 class="sub_nav_text">Login</h2>
+                </a>
+            </div>
+            <% } else { %>
+                <div id="profil_menu">
+                    <a href="/users/<%= user._id %>" id="profil_picture">
+                        <img src="../assets/img/profil_picture.jpg" id="profil_picture">
+                    </a>
+                    <a href="/logout" class="links" id="profil_logout">
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+                <% } %>
+    </div>
+    <main>
+        <div id="user_menu">
+            <h1 class="altSubtitle">
+                #<%= order._id %>
+            </h1>
+
+            <div id="order_basic_info">
+                <h2><b>Buyer: </b>
+                    <a class="links users_links" href="../users/<%= order.buyer.id %>">@<%= order.buyer.username %></a>
+                </h2>
+                <h2><b>Restaurant: </b>
+                    <%= order.restaurantName %>
+                </h2>
+            </div>
+
+            <div id="order_list">
+                <h2 class="altSubtitle">Order details</h2>
+
+                <% for (let item of order.order) { %>
+                    <div class="order_detail_item">
+                        <h2>
+                            <%= item.quantity %>&times;
+                        </h2>
+                        <h2>
+                            <%= item.name %>
+                        </h2>
+                        <h2>
+                            <%= item.price.toLocaleString("en-CA", { style: "currency" , currency: "CAD" }) %>
+                        </h2>
+                    </div>
+                    <% } %>
+                        <br>
+                        <hr>
+                        <br>
+                        <div id="price_info">
+                            <div>
+                                <h2>Subtotal: </h2>
+                                <h2>Tax: </h2>
+                                <h2>Delivery Fee: </h2>
+                                <h2><b>Total:</b></h2>
+                            </div>
+
+                            <div class="order_detail_number">
+                                <h2>
+                                    <%= order.subtotal.toLocaleString("en-CA", { style: "currency" , currency: "CAD" })
+                                        %>
+                                </h2>
+                                <h2>
+                                    <%= order.tax.toLocaleString("en-CA", { style: "currency" , currency: "CAD" }) %>
+                                </h2>
+                                <h2>
+                                    <%= order.deliveryFee.toLocaleString("en-CA", { style: "currency" , currency: "CAD"
+                                        }) %>
+                                </h2>
+                                <h2>
+                                    <b>
+                                        <%= order.total.toLocaleString("en-CA", { style: "currency" , currency: "CAD" })
+                                            %>
+                                    </b>
+                                </h2>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

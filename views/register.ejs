@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Feast - Register</title>
+    <link rel="icon" href="../assets/img/favicon.png">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="login.js" defer></script>
+
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <img id="logo" src="assets/img/logo.png">
+        <div id="nav_links">
+            <a href="/">
+                <h2>Home</h2>
+            </a>
+            <a href="/users">
+                <h2>Users</h2>
+            </a>
+        </div>
+
+        <div id="login_button">
+            <a class="sub_nav_links selected" href="/register">
+                <h2 class="sub_nav_text">Register</h2>
+            </a>
+            <a class="sub_nav_links" href="/login">
+                <h2 class="sub_nav_text">Login</h2>
+            </a>
+        </div>
+    </div>
+    <main>
+        <div class="form">
+            <h1 class="title">Register</h1>
+            <div>
+                <h2>Username</h2>
+                <input type="text" id="username" class="form_input" placeholder="Pick a username">
+            </div>
+            <br>
+            <br>
+            <div>
+                <h2>Email</h2>
+                <input type="text" id="email" class="form_input" placeholder="Enter your email">
+            </div>
+            <br>
+            <br>
+            <div>
+                <h2>Password</h2>
+                <input type="password" id="password" class="form_input" placeholder="Enter password">
+                <h4>&#8203;</h4>
+                <input type="password" id="password_confirm" class="form_input" placeholder="Confirm password">
+            </div>
+            <br>
+            <h3 id="error">&#8203;</h3>
+            <br>
+            <button id="login" onclick="register()">Register</button>
+            <br>
+            <br>
+            <h3 class="subtitle">Already have an account? <a class="links" href="/login">Sign in</a> instead</h3>
+        </div>
+    </main>
+</body>
+
+</html>

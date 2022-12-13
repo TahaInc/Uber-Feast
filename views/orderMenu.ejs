@@ -1,0 +1,186 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Feast - Order</title>
+    <link rel="icon" href="assets/img/favicon.png">
+
+    <link rel="stylesheet" href="../style.css">
+    <script src="orderMenu.js" defer></script>
+
+    <style>
+        main {
+            display: grid;
+            grid-template-columns: min(25%, 300px) 1fr;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <img id="logo" src="assets/img/logo.png">
+        <div id="nav_links">
+            <a href="/">
+                <h2>Home</h2>
+            </a>
+            <a href="/users">
+                <h2>Users</h2>
+            </a>
+            <% if (user) { %>
+                <a href="/order" class="selected">
+                    <h2>Order</h2>
+                </a>
+                <% } %>
+        </div>
+
+        <% if (!user) { %>
+            <div id="login_button">
+                <a class="sub_nav_links" href="/register">
+                    <h2 class="sub_nav_text">Register</h2>
+                </a>
+                <a class="sub_nav_links" href="/login">
+                    <h2 class="sub_nav_text">Login</h2>
+                </a>
+            </div>
+            <% } else { %>
+                <div id="profil_menu">
+                    <a href="/users/<%= user._id %>" id="profil_picture">
+                        <img src="assets/img/profil_picture.jpg" id="profil_picture">
+                    </a>
+                    <a href="/logout" class="links" id="profil_logout">
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+                <% } %>
+    </div>
+
+    <div id="prompt">
+        <h1 class="center_text" id="prompt_message"></h1>
+        <h3 class="sub_text center_text" id="prompt_submessage"></h3>
+        <div class="prompt_buttons_wrapper" id="prompt_change_resto_options">
+            <button class="prompt_buttons" onclick="changeResto()">Switch</button>
+            <button class="prompt_buttons" onclick="dismissPrompt()">Stay</button>
+        </div>
+        <div class="prompt_buttons_wrapper" id="prompt_dismiss_options">
+            <button class="prompt_buttons" onclick="dismissPrompt(true)">Dismiss</button>
+        </div>
+    </div>
+    <div id="prompt_bg" onclick="dismissPrompt()"></div>
+
+    <main>
+        <div id="sidebar" onmouseenter="expandMenu()" onmouseleave="collapseMenu()">
+            <h1 id="select_resto">&nbsp;<br><span id='select_resto_subtext'>&nbsp;</span></h1>
+
+            <div id="resto_list">
+                <!-- Restaurants list will be generated here -->
+            </div>
+
+        </div>
+
+        <div id="content">
+            <h1 id="select_resto_text">← Pick a restaurant</h1>
+
+            <div id="menu_categories">
+                <!-- Categories buttons will be generated here -->
+            </div>
+
+            <div id="menu">
+
+                <div id="resto_info">
+
+                    <!-- Selected restaurant information will populate these text elements -->
+                    <h1 id="resto_info_name"></h1>
+                    <div>
+                        <h3 id="resto_info_delivery"></h3>
+                        <h3 id="resto_info_minimum"></h3>
+                    </div>
+                </div>
+
+                <div id="resto_menu">
+                    <!-- Menu items will be generated here -->
+                </div>
+
+            </div>
+
+            <div id="order">
+
+                <h1 id="order_summary_text">Order summary</h1>
+
+                <div id="order_summary">
+                    <!-- Selected items will be added here -->
+                </div>
+
+                <div id="order_detail">
+
+                    <div id="order_detail_texts">
+                        <!-- Prices details will be updated here -->
+                        <div></div>
+                        <div></div>
+                    </div>
+
+                    <div id="order_detail_confirm">
+                        <h3 id="order_detail_error">
+                            <!-- Error messages will be added here -->
+                        </h3>
+
+                        <div id="order_detail_submit" onclick="submitOrder()">
+                            <h2 class="menu_text">Order</h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+
+
+<!-- Hidden elements used as templates for the clonable buttons and items -->
+<div class="resto_button hidden" onclick="preselectResto(this)">
+    <h2></h2>
+    <h3></h3>
+</div>
+
+<div class="category_button hidden" onclick="selectCategory(this)">
+    <h2 class="category_text"></h2>
+</div>
+
+<div class="menu_button hidden">
+    <div class="menu_button_text">
+        <h2 class="menu_text"></h2>
+        <h3 class="menu_text"></h3>
+        <h3 class="menu_text_desc"></h3>
+    </div>
+    <div>
+        <h1 class="menu_text"></h1>
+    </div>
+    <div>
+        <div class="addOrder" data-item="" data-price="" onclick="addItem(this)">
+            <h1>+</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="order_item hidden">
+    <div class="item_button_text">
+        <h2 class="order_text"></h2>
+        <h3 class="order_text_desc"></h3>
+        <h3 class="menu_text_desc"></h3>
+    </div>
+    <div>
+        <h2 class="menu_text"></h2>
+    </div>
+    <div>
+        <div class="addOrder" data-item="" data-price="" onclick="removeItem(this)">
+            <h1>−</h1>
+        </div>
+    </div>
+</div>
+
+
+
+</html>

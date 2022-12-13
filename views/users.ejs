@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Feast - Users</title>
+    <link rel="icon" href="../assets/img/favicon.png">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <img id="logo" src="assets/img/logo.png">
+        <div id="nav_links">
+            <a href="/">
+                <h2>Home</h2>
+            </a>
+            <a href="/users" class="selected">
+                <h2>Users</h2>
+            </a>
+            <% if (user) { %>
+                <a href="/order">
+                    <h2>Order</h2>
+                </a>
+                <% } %>
+        </div>
+
+        <% if (!user) { %>
+            <div id="login_button">
+                <a class="sub_nav_links" href="/register">
+                    <h2 class="sub_nav_text">Register</h2>
+                </a>
+                <a class="sub_nav_links" href="/login">
+                    <h2 class="sub_nav_text">Login</h2>
+                </a>
+            </div>
+            <% } else { %>
+                <div id="profil_menu">
+                    <a href="/users/<%= user._id %>" id="profil_picture">
+                        <img src="assets/img/profil_picture.jpg" id="profil_picture">
+                    </a>
+                    <a href="/logout" class="links" id="profil_logout">
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+                <% } %>
+    </div>
+    <main>
+        <h1 class="title altTitle">Users</h1>
+        <div id="users_list">
+            <% if (users.length=="0" ) { %>
+                <h2 class="altSubtitle" id="no_matching_users">No matching users</h2>
+                <% } else { %>
+                    <% for (let user of users) { %>
+                        <a class="links users_links" href="users/<%= user._id %>">
+                            <h2>
+                                @<%= user.username %>
+                            </h2>
+                        </a>
+                        <% } %>
+                            <% } %>
+        </div>
+    </main>
+</body>
+
+</html>
