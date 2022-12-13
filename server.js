@@ -26,7 +26,7 @@ fs.readdirSync("restaurants").forEach((file) => {
 });
 
 app.set("view-engine", "ejs");
-app.use(express.static("views"));
+app.use(express.static("/projects/uber-feast/views"));
 app.use(express.json());
 app.use(session({ secret: "a4", resave: true, saveUninitialized: true, store: mongoStore }));
 app.use(express.urlencoded({ extended: true }));
