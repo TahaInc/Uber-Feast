@@ -12,13 +12,13 @@ function login() {
 
   xhttp.onload = function () {
     if (this.status == 200) {
-      window.location.href = "/users/" + xhttp.responseText;
+      window.location.href = "./users/" + xhttp.responseText;
     } else {
       document.getElementById("error").innerHTML = xhttp.responseText;
     }
   };
 
-  xhttp.open("POST", "/login", true);
+  xhttp.open("POST", "./login", true);
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(JSON.stringify({ username: username, password: password }));
 }
@@ -44,13 +44,13 @@ function register() {
 
   xhttp.onload = function () {
     if (this.status == 200) {
-      window.location.href = "/users/" + xhttp.responseText;
+      window.location.href = "./users/" + xhttp.responseText;
     } else {
       document.getElementById("error").innerHTML = xhttp.responseText;
     }
   };
 
-  xhttp.open("POST", "/register", true);
+  xhttp.open("POST", "./register", true);
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(JSON.stringify({ username: username, password: password }));
 }
