@@ -7,6 +7,7 @@ const app = express();
 const MongoDBStore = require("connect-mongodb-session")(session);
 
 const mongoURL = "mongodb://127.0.0.1:27017/";
+const PORT = process.env.PORT || 8080;
 
 let db;
 let MongoClient = mongo.MongoClient;
@@ -240,7 +241,6 @@ MongoClient.connect(mongoURL, function (err, client) {
 
   db = client.db("a4");
 
-  // Server listens on port 1117
-  console.log("Server running at http://localhost:1117/");
-  app.listen(1117);
+  console.log("Server running at http://localhost:" + PORT);
+  app.listen(PORT);
 });
