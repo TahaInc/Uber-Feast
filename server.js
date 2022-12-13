@@ -54,7 +54,7 @@ app.get("/order", (req, res) => {
 app.get("/login", (req, res) => {
   // Serve the homepage if already logged in
   if (req.loggedIn) {
-    res.redirect("/");
+    res.redirect("./");
   } else {
     res.render("login.ejs");
   }
@@ -80,7 +80,7 @@ app.post("/login", (req, res) => {
 app.get("/register", (req, res) => {
   // Serve the homepage if already logged in
   if (req.loggedIn) {
-    res.redirect("/");
+    res.redirect("./");
   } else {
     res.render("register.ejs");
   }
@@ -106,7 +106,7 @@ app.get("/logout", (req, res) => {
   // Set the credential cookies to null and redirect to home page
   req.session.username = null;
   req.session.password = null;
-  res.redirect("/");
+  res.redirect("./");
 });
 
 app.get("/restaurants", (req, res) => {
