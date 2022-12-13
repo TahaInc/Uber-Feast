@@ -33,7 +33,7 @@ xhttp.onload = function () {
   }
 };
 
-xhttp.open("GET", "./restaurants", true);
+xhttp.open("GET", "../restaurants", true);
 xhttp.send();
 
 // Function to attempt a change in restaurant. This function will not actually change the restaurant, only shows the prompt or call the appropriate change function
@@ -359,7 +359,7 @@ function submitOrder() {
     }
   };
 
-  xhttp.open("POST", "./orders", true);
+  xhttp.open("POST", "../orders", true);
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(JSON.stringify({ restaurantID: restaurantInfo.id, restaurantName: restaurantInfo.name, subtotal: subtotal, deliveryFee: deliveryFee, tax: tax, total: total, order: orderList })); // Send the resaurant name, total and purchased items to the server.
 }

@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uber Feast - Order #<%= order._id %>
     </title>
-    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="icon" href="../assets/img/favicon.png">
 
-    <link rel="stylesheet" href="style.css">
-    <script src="user.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../user.js" defer></script>
 
     <style>
         main {
@@ -22,16 +22,16 @@
 
 <body>
     <div id="nav">
-        <img id="logo" src="assets/img/logo.png">
+        <img id="logo" src="../assets/img/logo.png">
         <div id="nav_links">
-            <a href="./">
+            <a href="../">
                 <h2>Home</h2>
             </a>
-            <a href="./users">
+            <a href="../users/">
                 <h2>Users</h2>
             </a>
             <% if (user) { %>
-                <a href="./order">
+                <a href="../order/">
                     <h2>Order</h2>
                 </a>
                 <% } %>
@@ -39,19 +39,19 @@
 
         <% if (!user) { %>
             <div id="login_button">
-                <a class="sub_nav_links" href="./register">
+                <a class="sub_nav_links" href="../register/">
                     <h2 class="sub_nav_text">Register</h2>
                 </a>
-                <a class="sub_nav_links" href="./login">
+                <a class="sub_nav_links" href="../login/">
                     <h2 class="sub_nav_text">Login</h2>
                 </a>
             </div>
             <% } else { %>
                 <div id="profil_menu">
-                    <a href="./users/<%= user._id %>" id="profil_picture">
-                        <img src="assets/img/profil_picture.jpg" id="profil_picture">
+                    <a href="../users/<%= user._id %>" id="profil_picture">
+                        <img src="../assets/img/profil_picture.jpg" id="profil_picture">
                     </a>
-                    <a href="./logout" class="links" id="profil_logout">
+                    <a href="../logout/" class="links" id="profil_logout">
                         <h3>Logout</h3>
                     </a>
                 </div>
@@ -65,7 +65,7 @@
 
             <div id="order_basic_info">
                 <h2><b>Buyer: </b>
-                    <a class="links users_links" href="users/<%= order.buyer.id %>">@<%= order.buyer.username %></a>
+                    <a class="links users_links" href="../users/<%= order.buyer.id %>">@<%= order.buyer.username %></a>
                 </h2>
                 <h2><b>Restaurant: </b>
                     <%= order.restaurantName %>

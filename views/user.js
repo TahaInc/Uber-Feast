@@ -14,6 +14,6 @@ function togglePrivacyStatus() {
     }
   };
 
-  xhttp.open("POST", "./togglePrivacy", true);
+  xhttp.open("POST", "../togglePrivacy", true);
   xhttp.send();
 }
