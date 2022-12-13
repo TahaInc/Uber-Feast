@@ -240,7 +240,7 @@ MongoClient.connect(mongoURL, function (err, client) {
 
   db = client.db("a4");
 
-  // Server listens on port 3000
-  console.log("Server running at http://localhost:3000/");
-  app.listen(3000);
+  // Server listens on port 1117
+  console.log("Server running at http://localhost:1117/");
+  app.listen(1117);
 });
