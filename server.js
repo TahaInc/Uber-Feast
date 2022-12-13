@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("*", auth); // For all get requests, check authentication status
 
-app.get("./", (req, res) => {
+app.get("/home", (req, res) => {
   // Serve the home page
   if (req.loggedIn) {
     res.render("home.ejs", { user: req.user });
