@@ -47,7 +47,7 @@ app.get("/order", (req, res) => {
   if (req.loggedIn) {
     res.render("orderMenu.ejs", { user: req.user });
   } else {
-    res.redirect("/login");
+    res.redirect("./login");
   }
 });
 
