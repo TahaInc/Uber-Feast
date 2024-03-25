@@ -9,8 +9,8 @@
 
 <br />
 
-**A georgeous UI featuring smooth animations** ![order](https://github.com/TahaInc/uber-feast/blob/main/images/screenshot_1.gif?raw=true)
+**A georgeous UI featuring smooth animations** ![order](./images/screenshot_1.gif)
 
-**A beautiful Uber Eats reskin** ![home](https://github.com/TahaInc/uber-feast/blob/main/images/screenshot_2.png?raw=true)
+**A beautiful Uber Eats reskin** ![home](./images/screenshot_2.png)
 
-**A login system to keep track of your order** ![login](https://github.com/TahaInc/uber-feast/blob/main/images/screenshot_3.png?raw=true)
+**A login system to keep track of your order** ![login](./images/screenshot_3.png)
